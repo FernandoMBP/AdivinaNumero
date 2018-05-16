@@ -74,7 +74,8 @@ public class MarcoInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonYoAdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonYoAdvActionPerformed
-        // TODO add your handling code here:
+       MarcoYoAdivino marcoYo = new MarcoYoAdivino(YOHandler);
+       marcoYo.setVisible(true);
     }//GEN-LAST:event_botonYoAdvActionPerformed
 
     private void botonPcAdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPcAdvActionPerformed

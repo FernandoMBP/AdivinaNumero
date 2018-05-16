@@ -20,4 +20,15 @@ public class YoAdivino {
         return numero;
     }
     
+    public int evaluarNumero(int numeroPensado, int numeroPersona){
+        if(numeroPensado > numeroPersona)
+            return 1;
+        if(numeroPensado < numeroPersona)
+            return -1;
+        if(numeroPensado == numeroPersona)
+            return 0;
+        else
+            return 10;
+    }
+    
 }
