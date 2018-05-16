@@ -16,7 +16,7 @@ public class YoAdivino {
     
     public int inicializar(){
         numero = r.nextInt(101);
-        //Cada vez que inicio el juego el programa genera un nuevo valor al azar entre 0 y 100
+        //Cada vez que inicio el juego el programa genera un nuevo valor al azar entre 0 y 100 para que alguien adivine
         return numero;
     }
     

@@ -33,6 +33,11 @@ public class MarcoInicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         botonYoAdv.setText("Yo Adivino");
+        botonYoAdv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonYoAdvActionPerformed(evt);
+            }
+        });
 
         botonPcAdv.setText("Pc Adivina");
 
@@ -60,9 +65,11 @@ public class MarcoInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void botonYoAdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonYoAdvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonYoAdvActionPerformed
+
+    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
