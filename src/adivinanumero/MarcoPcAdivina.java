@@ -11,16 +11,18 @@ package adivinanumero;
  */
 public class MarcoPcAdivina extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MarcoPcAdivina
-     * @param PCHandler
-     */
+    
+    private int numeroPensado;
+    private int numeroPosible;
+    private PcAdivina handlerPc;
+    
     public MarcoPcAdivina(PcAdivina PCHandler) {
         initComponents();
-        int numero = PCHandler.inicializar();
-        valor.setText(Integer.toString(numero));
+        handlerPc = PCHandler;
+        numeroPensado = handlerPc.inicializar();
+        cajaNumero.setText(Integer.toString(numeroPensado));
         mensaje.setText("Es este tu numero?");
-        
+        System.out.println("el valor es "+numeroPensado);
     }
 
     /**
@@ -33,11 +35,10 @@ public class MarcoPcAdivina extends javax.swing.JFrame {
     private void initComponents() {
 
         mensaje = new javax.swing.JTextField();
-        valor = new javax.swing.JTextField();
+        cajaNumero = new javax.swing.JTextField();
         mayor = new javax.swing.JButton();
         igual = new javax.swing.JButton();
         menor = new javax.swing.JButton();
-        cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("La PC adivina tu numero");
@@ -52,58 +53,62 @@ public class MarcoPcAdivina extends javax.swing.JFrame {
             }
         });
 
-        valor.setEditable(false);
-        valor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        valor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cajaNumero.setEditable(false);
+        cajaNumero.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        cajaNumero.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         mayor.setText("+");
+        mayor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mayorActionPerformed(evt);
+            }
+        });
 
         igual.setText("=");
+        igual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                igualActionPerformed(evt);
+            }
+        });
 
         menor.setText("-");
-
-        cancelar.setText("Cancelar");
+        menor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(mensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(mayor, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(igual, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(menor, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cancelar)
-                        .addGap(46, 46, 46))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cajaNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(mayor, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(igual, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(44, 44, 44)
+                        .addComponent(menor, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(mensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(cajaNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelar))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(mayor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(igual, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(menor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mayor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(igual, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71))
         );
 
@@ -114,13 +119,29 @@ public class MarcoPcAdivina extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mensajeActionPerformed
 
+    private void mayorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mayorActionPerformed
+        numeroPosible = handlerPc.mayor(Integer.parseInt(cajaNumero.getText()));
+        mensaje.setText("Es este tu numero?");
+        cajaNumero.setText(Integer.toString(numeroPosible));
+    }//GEN-LAST:event_mayorActionPerformed
+
+    private void igualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualActionPerformed
+        mensaje.setText("Adivine tu numero!, vuelve a jugar cuando quieras");
+        handlerPc.igual();
+    }//GEN-LAST:event_igualActionPerformed
+
+    private void menorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menorActionPerformed
+        numeroPosible = handlerPc.menor(Integer.parseInt(cajaNumero.getText()));
+        mensaje.setText("Es este tu numero?");
+        cajaNumero.setText(Integer.toString(numeroPosible));
+    }//GEN-LAST:event_menorActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelar;
+    private javax.swing.JTextField cajaNumero;
     private javax.swing.JButton igual;
     private javax.swing.JButton mayor;
     private javax.swing.JButton menor;
     private javax.swing.JTextField mensaje;
-    private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }

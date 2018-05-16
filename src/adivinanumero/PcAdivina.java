@@ -13,7 +13,10 @@ import java.util.Random;
 public class PcAdivina {
     
     private int numero=0;
+    int nuevoValor = 0;
     private Random r = new Random();
+    private int contadorMayor = 0;
+    private int contadorMenor = 0;
     
     
     public int inicializar(){
@@ -23,16 +26,53 @@ public class PcAdivina {
     }
     
     public int mayor(int valor){
-       int nuevoValor = 0; 
+       if(contadorMayor == 0)
+           contadorMayor++;
+       if(contadorMayor>=5){
+           nuevoValor = valor + 5;
+           contadorMayor++;
+       }
+       if(contadorMayor>=10){
+           nuevoValor = valor + 1;
+           contadorMayor++;
+       }
+       else{
+           nuevoValor = valor + (20/contadorMayor);
+           contadorMayor++;
+       }
        return nuevoValor; 
     }
     
     public int menor(int valor){
-       int nuevoValor = 0; 
+       if(contadorMenor == 0)
+           contadorMenor++;
+       if(contadorMenor>=5){
+           nuevoValor = valor - 5;
+           contadorMenor++;
+       }
+       if(contadorMenor>=10){
+           nuevoValor = valor - 1;
+           contadorMenor++;
+       }
+       else{
+           nuevoValor = valor - (20/contadorMenor);
+           contadorMenor++;
+       }
        return nuevoValor;
     }
     
     public void igual(){
-        
+        contadorMayor = 0;
+        contadorMenor = 0;
     }
+
+    public int getContadorMayor() {
+        return contadorMayor;
+    }
+
+    public int getContadorMenor() {
+        return contadorMenor;
+    }
+    
+    
 }

@@ -10,8 +10,8 @@ public class MarcoYoAdivino extends javax.swing.JFrame {
     
     public MarcoYoAdivino(YoAdivino YOHandler) {
         initComponents();
-        numeroPensado = YOHandler.inicializar();
         handlerYo = YOHandler;
+        numeroPensado = handlerYo.inicializar();
         mensaje.setText("He pensado un numero, ingresa el que crees que es y te dire si es mayor o menor");
         System.out.println("el valor es "+numeroPensado);
     }
@@ -31,6 +31,7 @@ public class MarcoYoAdivino extends javax.swing.JFrame {
         mensaje = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Intenta adivinar el numero pensado por mi!");
 
         cajaNumero.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         cajaNumero.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -75,8 +76,8 @@ public class MarcoYoAdivino extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(cajaNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
