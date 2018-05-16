@@ -13,13 +13,13 @@ public class MarcoPcAdivina extends javax.swing.JFrame {
 
     /**
      * Creates new form MarcoPcAdivina
+     * @param PCHandler
      */
     public MarcoPcAdivina(PcAdivina PCHandler) {
         initComponents();
-        initComponents();
         int numero = PCHandler.inicializar();
         valor.setText(Integer.toString(numero));
-        mensaje.setText("Ingresa un numero para empesar");
+        mensaje.setText("Es este tu numero?");
         
     }
 
@@ -39,13 +39,22 @@ public class MarcoPcAdivina extends javax.swing.JFrame {
         menor = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("La PC adivina tu numero");
 
+        mensaje.setEditable(false);
+        mensaje.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        mensaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        mensaje.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         mensaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mensajeActionPerformed(evt);
             }
         });
+
+        valor.setEditable(false);
+        valor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        valor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         mayor.setText("+");
 

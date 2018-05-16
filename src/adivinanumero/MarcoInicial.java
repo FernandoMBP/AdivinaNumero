@@ -11,10 +11,13 @@ package adivinanumero;
  */
 public class MarcoInicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MarcoInicial
-     */
-    public MarcoInicial() {
+    private PcAdivina PCHandler;
+    private YoAdivino YOHandler;
+
+    
+    public MarcoInicial(PcAdivina handlerPC, YoAdivino handlerYO) {
+        PCHandler = handlerPC;
+        YOHandler = handlerYO;
         initComponents();
     }
 
@@ -40,6 +43,11 @@ public class MarcoInicial extends javax.swing.JFrame {
         });
 
         botonPcAdv.setText("Pc Adivina");
+        botonPcAdv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPcAdvActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,6 +76,12 @@ public class MarcoInicial extends javax.swing.JFrame {
     private void botonYoAdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonYoAdvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonYoAdvActionPerformed
+
+    private void botonPcAdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPcAdvActionPerformed
+        MarcoPcAdivina marcoPc = new MarcoPcAdivina(PCHandler);
+        marcoPc.setVisible(true);
+        
+    }//GEN-LAST:event_botonPcAdvActionPerformed
 
     
    
